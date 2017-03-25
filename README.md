@@ -1,2 +1,2 @@
 # JavaProj
-Java Assignments &amp; Projects
+Java Assignments &amp; Project
