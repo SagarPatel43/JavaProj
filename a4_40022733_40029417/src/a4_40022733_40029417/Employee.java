@@ -73,7 +73,9 @@ public class Employee implements Ordered{
     }
     
     public String toString(){
-        return employeeID + "\t" + firstName + "\t" + lastName + "\t\t\t" + cityResidence + "\t\t" + hireYear;
+        //return employeeID + "\t" + firstName + "\t" + lastName + "\t\t\t" + cityResidence + "\t\t" + hireYear;
+        //First two are good, fix the rest of the spacing
+        return String.format("%-7d %-7s %-7s %-30s %-30d", employeeID, firstName, lastName, cityResidence, hireYear);
     }
     
     public boolean equals(Object ob){

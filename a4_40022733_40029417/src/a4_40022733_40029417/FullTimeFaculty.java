@@ -28,7 +28,8 @@ public class FullTimeFaculty extends Employee {
     }
 
     public String toString() {
-        return super.toString() + "\t" + salary;
+        //return super.toString() + "\t" + salary;
+        return super.toString() + String.format("%-30f", salary);
     }
 
     

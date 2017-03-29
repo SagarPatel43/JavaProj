@@ -98,8 +98,8 @@ public class Main {
         
         try {
             addFTRecords(ft, "Full-Time-Faculty.txt");
-            addPTRecords(pt, "Part-Time-Faculty.txt");
-            addTARecords(ta, "TAs.txt");
+            //addPTRecords(pt, "Part-Time-Faculty.txt");
+            //addTARecords(ta, "TAs.txt");
         } catch (FileNotFoundException e) {
             System.out.println(e);
         }
