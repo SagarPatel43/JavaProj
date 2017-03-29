@@ -52,18 +52,7 @@ public class TeachingAssistant extends Employee{
     }
     
     public String toString() {
-        return "This teaching assitant is " + lastName + ", " + firstName + " lives in " + cityResidence + ", was hired in " + hireYear + ", has a classification of"
-                + classification + ",taking " + numClass + " classes and works " + totalWorkingHours;
+        return super.toString() + "\t" + classification + "\t" + numClass + "\t" + totalWorkingHours;
     }
 
-    public boolean equals(Object ob) {
-        if (ob.getClass() != this.getClass() || ob == null) {
-            return false;
-        }
-        TeachingAssistant e = (TeachingAssistant) ob;
-        if (super.equals(e) && e.classification.equals(classification) && e.numClass == numClass && e.totalWorkingHours == totalWorkingHours) {
-            return true;
-        }
-        return false;
-    }
 }

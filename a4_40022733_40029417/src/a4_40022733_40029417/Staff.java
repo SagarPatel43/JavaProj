@@ -43,15 +43,5 @@ public class Staff extends Employee{
         return "This staff member is " + lastName + ", " + firstName + " lives in " + cityResidence + ", was hired in " + hireYear + " with a salary of"
                 + salary + " and a performance code of " + performanceCode;
     }
-
-    public boolean equals(Object ob) {
-        if (ob.getClass() != this.getClass() || ob == null) {
-            return false;
-        }
-        Staff e = (Staff) ob;
-        if (super.equals(e) && e.salary == salary && e.performanceCode == performanceCode) {
-            return true;
-        }
-        return false;
-    }   
+  
 }

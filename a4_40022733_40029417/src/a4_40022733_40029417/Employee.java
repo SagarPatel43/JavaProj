@@ -73,7 +73,7 @@ public class Employee implements Ordered{
     }
     
     public String toString(){
-        return "The employee " + lastName + ", " + firstName + " lives in " + cityResidence + " and was hired " + hireYear;
+        return employeeID + "\t" + firstName + "\t" + lastName + "\t\t\t" + cityResidence + "\t\t" + hireYear;
     }
     
     public boolean equals(Object ob){
@@ -81,7 +81,7 @@ public class Employee implements Ordered{
             return false;
         }
         Employee e = (Employee) ob;
-        if(e.employeeID == this.employeeID && e.firstName.equals(firstName) && e.lastName.equals(lastName) && e.cityResidence.equals(cityResidence) && e.hireYear == hireYear){
+        if(e.employeeID == this.employeeID){
             return true;
         }
         return false;

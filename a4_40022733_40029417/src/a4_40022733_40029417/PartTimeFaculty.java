@@ -46,18 +46,7 @@ public class PartTimeFaculty extends Employee{
     
     
     public String toString() {
-        return "This part time faculty member is " + lastName + ", " + firstName + " lives in " + cityResidence + ", was hired in " + hireYear + ", has a hourly salary of"
-                + hourlyRate + " and has " + numHours +" hours and has" + numStudents +" students";
+        return super.toString() + "\t" + numHours + "\t" + numStudents;
     }
 
-    public boolean equals(Object ob) {
-        if (ob.getClass() != this.getClass() || ob == null) {
-            return false;
-        }
-        PartTimeFaculty e = (PartTimeFaculty) ob;
-        if (super.equals(e) && e.hourlyRate == hourlyRate && e.numHours == numHours && e.numStudents == numStudents) {
-            return true;
-        }
-        return false;
-    }
 }

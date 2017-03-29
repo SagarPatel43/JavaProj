@@ -28,18 +28,8 @@ public class FullTimeFaculty extends Employee {
     }
 
     public String toString() {
-        return "This full time faculty member is " + lastName + ", " + firstName + " lives in " + cityResidence + ", was hired in " + hireYear + " and has a salary of"
-                + salary;
+        return super.toString() + "\t" + salary;
     }
 
-    public boolean equals(Object ob) {
-        if (ob.getClass() != this.getClass() || ob == null) {
-            return false;
-        }
-        FullTimeFaculty e = (FullTimeFaculty) ob;
-        if (super.equals(e) && e.salary == salary) {
-            return true;
-        }
-        return false;
-    }
+    
 }
