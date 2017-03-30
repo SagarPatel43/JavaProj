@@ -21,13 +21,14 @@ public class Main {
         read.close();
         
         while(ans != -1){
+            System.out.print("Please enter information for new Full Time Faculty record: ");
             FullTimeFaculty temp = new FullTimeFaculty(console.nextLong(), console.next(), console.next(), console.next(), console.nextInt(), console.nextDouble());
             while(ft.contains(temp)){
-                System.out.println("Already have a person with that ID, please enter a new employee ID");
+                System.out.print("There is already an employee with that ID, please enter a new employee ID : ");
                 temp.setEmployeeID(console.nextLong());
             }
             ft.add(temp);
-            System.out.println("Record added. do you wish to enter a new record? (Enter -1 to stop)");
+            System.out.println("Record added. Do you wish to enter a new record? (Enter -1 to stop, 1 to continue)");
             ans = console.nextInt();
         }
         
@@ -47,13 +48,14 @@ public class Main {
             pt.add(temp);
         }
         while(ans != -1){
+            System.out.print("Please enter information for new Part Time Faculty record: ");
             PartTimeFaculty temp = new PartTimeFaculty(console.nextLong(), console.next(), console.next(), console.next(), console.nextInt(), console.nextDouble(), console.nextInt(), console.nextInt());
             while(pt.contains(temp)){
                 System.out.println("Already have a person with that ID, please enter a new employee ID");
                 temp.setEmployeeID(console.nextLong());
             }
             pt.add(temp);
-            System.out.println("Record added, do you wish to enter a new record? (Enter -1 to stop)");
+            System.out.println("Record added. Do you wish to enter a new record? (Enter -1 to stop, 1 to continue)");
             ans = console.nextInt();
         }
         read.close();
@@ -73,13 +75,14 @@ public class Main {
             ta.add(temp);
         }
         while(ans != -1){
+            System.out.print("Please enter information for new Teaching Assistant record: ");
             TeachingAssistant temp = new TeachingAssistant(console.nextLong(), console.next(), console.next(), console.next(), console.nextInt(), console.next(), console.nextInt(), console.nextInt());
             while(ta.contains(temp)){
                 System.out.println("Already have a person with that ID, please enter a new employee ID");
                 temp.setEmployeeID(console.nextLong());
             }
             ta.add(temp);
-            System.out.println("Record added, do you wish to enter a new record? (Enter -1 to stop)");
+            System.out.println("Record added. Do you wish to enter a new record? (Enter -1 to stop, 1 to continue)");
             ans = console.nextInt();
         }
         read.close();
