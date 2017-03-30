@@ -52,7 +52,7 @@ public class TeachingAssistant extends Employee{
     }
     
     public String toString() {
-        return super.toString() + "\t" + classification + "\t" + numClass + "\t" + totalWorkingHours;
+        return super.toString() + String.format("%-7s %-7d %-7d", classification, numClass, totalWorkingHours);
     }
 
 }

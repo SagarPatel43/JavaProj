@@ -17,7 +17,7 @@ public class PartTimeFaculty extends Employee{
         super(employeeID, firstName, lastName, cityResidence, hireYear);
         this.hourlyRate = hourlyRate;
         this.numHours = numHours;
-        this.numHours = numStudents;
+        this.numStudents = numStudents;
     }
     
     public void setHourlyRate(double hourlyRate){
@@ -46,7 +46,7 @@ public class PartTimeFaculty extends Employee{
     
     
     public String toString() {
-        return super.toString() + "\t" + numHours + "\t" + numStudents;
+        return super.toString() + String.format("%-7.2f %-7d %-7d", hourlyRate, numHours, numStudents);
     }
 
 }
