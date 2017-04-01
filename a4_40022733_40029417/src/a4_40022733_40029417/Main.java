@@ -51,7 +51,7 @@ public class Main {
             System.out.print("Please enter information for new Part Time Faculty record: ");
             PartTimeFaculty temp = new PartTimeFaculty(console.nextLong(), console.next(), console.next(), console.next(), console.nextInt(), console.nextDouble(), console.nextInt(), console.nextInt());
             while(pt.contains(temp)){
-                System.out.println("Already have a person with that ID, please enter a new employee ID");
+                System.out.println("There is already an employee with that ID, please enter a new employee ID : ");
                 temp.setEmployeeID(console.nextLong());
             }
             pt.add(temp);
@@ -78,7 +78,7 @@ public class Main {
             System.out.print("Please enter information for new Teaching Assistant record: ");
             TeachingAssistant temp = new TeachingAssistant(console.nextLong(), console.next(), console.next(), console.next(), console.nextInt(), console.next(), console.nextInt(), console.nextInt());
             while(ta.contains(temp)){
-                System.out.println("Already have a person with that ID, please enter a new employee ID");
+                System.out.println("There is already an employee with that ID, please enter a new employee ID : ");
                 temp.setEmployeeID(console.nextLong());
             }
             ta.add(temp);
