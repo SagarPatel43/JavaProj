@@ -45,10 +45,9 @@ public class List {
         size = 0;
     }
 
-    public List(Node head, Node tail, int size) {
-        this.head = head;
-        this.tail = tail;
-        this.size = size;
+    public List(double data) {
+        head = tail = new Node(data, null);
+        size = 1;
     }
 
     public int getSize() {
@@ -63,12 +62,12 @@ public class List {
         return tail.data;
     }
 
-    public void addToStart(int v) {
+    public void addToStart(double v) {
         head = new Node(v, head);
         size++;
     }
 
-    public void addToEnd(int v) {
+    public void addToEnd(double v) {
         if (head == null) {
             addToStart(v);
         } else {
@@ -82,14 +81,20 @@ public class List {
         addToEnd(v);
     }
 
-    public void addAtIndex(int v, int index) {
-        Node t = head;
-        for (int i = 1; i < index; i++) {
-            t = t.next;
+    public void addAtIndex(double v, int index) {
+        if (index > size) {
+            System.out.println("Index is out of range");
+        } else if (size == 1) {
+            addToStart(v);
+        } else {
+            Node t = head;
+            for (int i = 1; i < index - 1; i++) {
+                t = t.next;
+            }
+            t.next = new Node(v, t.next);
+            t = null;
+            size++;
         }
-        t = new Node(v, t);
-        t = null;
-        size++;
     }
 
     //Probably unneccesary
@@ -110,15 +115,61 @@ public class List {
 
     public void removeFirst() {
         head = head.next;
+        size--;
     }
 
     public void removeLast() {
-        Node t = head;
-        while (t.next.next != null) {
-            t = t.next;
+        if (size == 1) {
+            head = null;
+        } else {
+            Node t = head;
+            while (t.next.next != null) {
+                t = t.next;
+            }
+            tail = t;
+            t.next = null;
+            t = null;
+            size--;
         }
-        tail = t;
-        t = null;
     }
 
+    public void clear() {
+        head = null;
+    }
+
+    public int getIndex(double data) {
+        Node t = head;
+        int index = 1;
+        while (t != null) {
+            if (t.data == data) {
+                return index;
+            } else {
+                t = t.next;
+                index++;
+            }
+        }
+        return -1;
+    }
+
+    public double getValue(int index) {
+        if (index > size) {
+            return 0;
+        } else {
+            Node t = head;
+            int counter = 1;
+            double x = 0;
+            while (t != null) {
+                if (counter == index) {
+                    x = t.data;
+                } else {
+                    t = t.next;
+                    counter++;
+                }
+            }
+            t = null;
+            return x;
+
+        }
+
+    }
 }
