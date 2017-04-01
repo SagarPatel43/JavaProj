@@ -51,6 +51,10 @@ public class TeachingAssistant extends Employee{
         return totalWorkingHours;
     }
     
+    public double getSalary() {
+        return 55.0;
+    }
+    
     public String toString() {
         return super.toString() + String.format("%-7s %-7d %-7d", classification, numClass, totalWorkingHours);
     }

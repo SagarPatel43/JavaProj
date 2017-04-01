@@ -44,6 +44,10 @@ public class PartTimeFaculty extends Employee{
         return numStudents;
     }
     
+    public double getSalary() {
+        //return hourlyRate * numHours;
+        return 45;
+    }
     
     public String toString() {
         return super.toString() + String.format("%-7.2f %-7d %-7d", hourlyRate, numHours, numStudents);
