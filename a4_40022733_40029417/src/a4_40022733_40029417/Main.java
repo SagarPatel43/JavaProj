@@ -109,26 +109,65 @@ public class Main {
 
         double totalSalary = 0;
         for (int i = 1; i <= PTlist.getSize(); i++) {
-            PartTimeFaculty pt = (PartTimeFaculty)PTlist.getValue(i);
-            totalSalary += pt.getHourlyRate()*pt.getNumHours();
+            PartTimeFaculty pt = (PartTimeFaculty) PTlist.getValue(i);
+            totalSalary += pt.getHourlyRate() * pt.getNumHours();
         }
 
         for (int i = 1; i <= TAlist.getSize(); i++) {
-            TeachingAssistant ta = (TeachingAssistant)TAlist.getValue(i);
-             
-            if(ta.getClassification().equals("Grad")) {
+            TeachingAssistant ta = (TeachingAssistant) TAlist.getValue(i);
+
+            if (ta.getClassification().equals("Grad")) {
                 totalSalary += (ta.getTotalWorkingHours() * 18.25) * 1.2;
-            } else if(ta.getClassification().equals("UGrad")) {
+            } else if (ta.getClassification().equals("UGrad")) {
                 totalSalary += ta.getTotalWorkingHours() * 18.25;
             } else {
                 totalSalary += 0;
             }
-            
-            
+
         }
 
         System.out.println("Total term salary for Teaching Assistants and Part Time is: $" + totalSalary);
 
+    }
+
+    static void findHighest_and_Lowest_FT_Salary(String FT) throws FileNotFoundException {
+        Scanner FTinput = new Scanner(new FileInputStream(FT));
+
+        EmployeeList FTlist = new EmployeeList();
+
+        while (FTinput.hasNext()) {
+            FTlist.add(new FullTimeFaculty(FTinput.nextLong(), FTinput.next(), FTinput.next(), FTinput.next(), FTinput.nextInt(), FTinput.nextDouble()));
+        }
+        FullTimeFaculty lowestSalary = ((FullTimeFaculty)FTlist.getValue(1));
+        FullTimeFaculty highestSalary = ((FullTimeFaculty)FTlist.getValue(1));
+
+        for(int i = 2; i <= FTlist.getSize(); i++) {
+            FullTimeFaculty ft = (FullTimeFaculty)FTlist.getValue(i);
+            if(ft.getSalary() < lowestSalary.getSalary()) {
+                lowestSalary = ft;
+            }
+            if(ft.getSalary() > highestSalary.getSalary()) {
+                highestSalary = ft;
+            }
+        }
+        
+        String lowest=lowestSalary.toString() + "\n";
+        String highest=highestSalary.toString() + "\n";
+        
+        for(int i = 1; i <= FTlist.getSize(); i++) {
+            FullTimeFaculty ft = (FullTimeFaculty)FTlist.getValue(i);
+            if(lowestSalary.getSalary() == ft.getSalary() && !lowestSalary.equals(ft)) {
+                lowest += ft + "\n";
+            }
+            if(highestSalary.getSalary() == ft.getSalary() && !highestSalary.equals(ft)) {
+                highest += ft + "\n";
+            }
+        }
+        
+        System.out.println("\nEmployee(s) with lowest salary: " + lowest + "\nEmployee(s) with highest salary: " + highest);
+        
+        
+    
     }
 
     public static void main(String[] args) {
@@ -138,10 +177,11 @@ public class Main {
         ArrayList<PartTimeFaculty> pt = new ArrayList<PartTimeFaculty>();
 
         try {
-            //addFTRecords(ft, "Full-Time-Faculty.txt");
+            addFTRecords(ft, "Full-Time-Faculty.txt");
             //addPTRecords(pt, "Part-Time-Faculty.txt");
             //addTARecords(ta, "TAs.txt");
             findTermSalary("Part-Time-Faculty.txt", "TAs.txt");
+            findHighest_and_Lowest_FT_Salary("Full-Time-Faculty.txt");
         } catch (FileNotFoundException e) {
             System.out.println(e);
         }
