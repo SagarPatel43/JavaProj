@@ -34,7 +34,12 @@ public class SalaryList {
     }
 
     public void add(double data) {
-        addToEnd(data);
+        if (size == 0) {
+            tail = head = new Node(data, null);
+            size = 1;
+        } else {
+            addToEnd(data);
+        }
     }
 
     public void addIndex(double data, int index) {
@@ -81,8 +86,8 @@ public class SalaryList {
             temp = null;
         }
     }
-    
-    public void clear(){
+
+    public void clear() {
         head = null;
     }
 
