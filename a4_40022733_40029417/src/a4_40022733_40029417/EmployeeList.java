@@ -71,6 +71,7 @@ public class EmployeeList {
 
     public void removeFirst() {
         head = head.next;
+        size--;
     }
 
     public void removeLast() {
@@ -85,6 +86,7 @@ public class EmployeeList {
             temp.next = null;
             temp = null;
         }
+        size--;
     }
 
     public void clear() {
