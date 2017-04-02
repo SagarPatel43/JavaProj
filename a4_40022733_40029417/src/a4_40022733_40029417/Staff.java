@@ -40,8 +40,7 @@ public class Staff extends Employee{
     }
     
     public String toString() {
-        return "This staff member is " + lastName + ", " + firstName + " lives in " + cityResidence + ", was hired in " + hireYear + " with a salary of"
-                + salary + " and a performance code of " + performanceCode;
+        return super.toString() + String.format("%-7.0f %-7c", salary, performanceCode);
     }
   
 }

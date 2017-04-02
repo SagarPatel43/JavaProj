@@ -2,6 +2,7 @@ package a4_40022733_40029417;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -138,36 +139,73 @@ public class Main {
         while (FTinput.hasNext()) {
             FTlist.add(new FullTimeFaculty(FTinput.nextLong(), FTinput.next(), FTinput.next(), FTinput.next(), FTinput.nextInt(), FTinput.nextDouble()));
         }
-        FullTimeFaculty lowestSalary = ((FullTimeFaculty)FTlist.getValue(1));
-        FullTimeFaculty highestSalary = ((FullTimeFaculty)FTlist.getValue(1));
+        FullTimeFaculty lowestSalary = ((FullTimeFaculty) FTlist.getValue(1));
+        FullTimeFaculty highestSalary = ((FullTimeFaculty) FTlist.getValue(1));
 
-        for(int i = 2; i <= FTlist.getSize(); i++) {
-            FullTimeFaculty ft = (FullTimeFaculty)FTlist.getValue(i);
-            if(ft.getSalary() < lowestSalary.getSalary()) {
+        for (int i = 2; i <= FTlist.getSize(); i++) {
+            FullTimeFaculty ft = (FullTimeFaculty) FTlist.getValue(i);
+            if (ft.getSalary() < lowestSalary.getSalary()) {
                 lowestSalary = ft;
             }
-            if(ft.getSalary() > highestSalary.getSalary()) {
+            if (ft.getSalary() > highestSalary.getSalary()) {
                 highestSalary = ft;
             }
         }
-        
-        String lowest=lowestSalary.toString() + "\n";
-        String highest=highestSalary.toString() + "\n";
-        
-        for(int i = 1; i <= FTlist.getSize(); i++) {
-            FullTimeFaculty ft = (FullTimeFaculty)FTlist.getValue(i);
-            if(lowestSalary.getSalary() == ft.getSalary() && !lowestSalary.equals(ft)) {
+
+        String lowest = lowestSalary.toString() + "\n";
+        String highest = highestSalary.toString() + "\n";
+
+        for (int i = 1; i <= FTlist.getSize(); i++) {
+            FullTimeFaculty ft = (FullTimeFaculty) FTlist.getValue(i);
+            if (lowestSalary.getSalary() == ft.getSalary() && !lowestSalary.equals(ft)) {
                 lowest += ft + "\n";
             }
-            if(highestSalary.getSalary() == ft.getSalary() && !highestSalary.equals(ft)) {
+            if (highestSalary.getSalary() == ft.getSalary() && !highestSalary.equals(ft)) {
                 highest += ft + "\n";
             }
         }
-        
+
         System.out.println("\nEmployee(s) with lowest salary: " + lowest + "\nEmployee(s) with highest salary: " + highest);
-        
-        
-    
+    }
+
+    static void increase_Staff_Salary(String ST) throws FileNotFoundException {
+        Scanner STinput = new Scanner(new FileInputStream(ST));
+
+        EmployeeList STlist = new EmployeeList();
+
+        while (STinput.hasNext()) {
+            STlist.add(new Staff(STinput.nextLong(), STinput.next(), STinput.next(), STinput.next(), STinput.nextInt(), STinput.nextDouble(), STinput.next().charAt(0)));
+        }
+
+        PrintWriter pw = new PrintWriter(new FileOutputStream(ST));
+        for (int i = 1; i <= STlist.getSize(); i++) {
+            Staff st = (Staff) STlist.getValue(i);
+            switch (st.getPerfCode()) {
+                case 'A': {
+                    st.setSalary(1.08 * st.getSalary());
+                    st.setPerfCode('E');
+                    break;
+                }
+                case 'B': {
+                    st.setSalary(1.06 * st.getSalary());
+                    st.setPerfCode('E');
+                    break;
+                }
+                case 'C': {
+                    st.setSalary(1.03 * st.getSalary());
+                    st.setPerfCode('E');
+                    break;
+                }
+                case 'D': {
+                    st.setSalary(1.01 * st.getSalary());
+                    st.setPerfCode('E');
+                    break;
+                }
+            }
+            pw.println(st);
+        }
+        pw.close();
+     
     }
 
     public static void main(String[] args) {
@@ -177,11 +215,12 @@ public class Main {
         ArrayList<PartTimeFaculty> pt = new ArrayList<PartTimeFaculty>();
 
         try {
-            addFTRecords(ft, "Full-Time-Faculty.txt");
+            //addFTRecords(ft, "Full-Time-Faculty.txt");
             //addPTRecords(pt, "Part-Time-Faculty.txt");
             //addTARecords(ta, "TAs.txt");
             findTermSalary("Part-Time-Faculty.txt", "TAs.txt");
             findHighest_and_Lowest_FT_Salary("Full-Time-Faculty.txt");
+            increase_Staff_Salary("StaffCOPY.txt");
         } catch (FileNotFoundException e) {
             System.out.println(e);
         }
