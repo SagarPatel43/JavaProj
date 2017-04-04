@@ -8,7 +8,7 @@ public class EmployeeList {
         private Node next;
 
         public Node() {
-            data =null;
+            data = null;
             next = null;
         }
 
@@ -42,22 +42,6 @@ public class EmployeeList {
         }
     }
 
-    public void addIndex(Employee data, int index) {
-        if (index > size) {
-            System.out.println("Out of range in list");
-        } else if (size == 1) {
-            addToStart(data);
-        } else {
-            Node temp = head;
-            for (int i = 1; i < index - 1; i++) {
-                temp = temp.next;
-            }
-            temp.next = new Node(data, temp.next);
-            temp = null;
-            size++;
-        }
-    }
-
     public void addToStart(Employee data) {
         head = new Node(data, head);
         size++;
@@ -77,6 +61,7 @@ public class EmployeeList {
     public void removeLast() {
         if (size == 1 || head == null) {
             head = null;
+            size=0;
         } else {
             Node temp = head;
             //fix for tail
@@ -84,6 +69,7 @@ public class EmployeeList {
                 temp = temp.next;
             }
             temp.next = null;
+            tail=temp;
             temp = null;
         }
         size--;
@@ -95,21 +81,6 @@ public class EmployeeList {
 
     public int getSize() {
         return size;
-    }
-
-    public int getIndex(Employee data) {
-        Node temp = head;
-        int counter = 0;
-        for (int i = 0; i < size - 1; i++) {
-            temp = head.next;
-            if (data.equals(temp.data)) {
-                temp = null;
-                return counter;
-            }
-            counter++;
-        }
-        counter = -1;
-        return counter;
     }
 
     public Employee getValue(int index) {

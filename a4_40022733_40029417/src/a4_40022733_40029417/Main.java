@@ -151,7 +151,7 @@ public class Main {
                 highestSalary = ft;
             }
         }
-
+        
         String lowest = lowestSalary.toString() + "\n";
         String highest = highestSalary.toString() + "\n";
 
@@ -210,17 +210,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<TeachingAssistant> ta = new ArrayList<TeachingAssistant>();
-        ArrayList<FullTimeFaculty> ft = new ArrayList<FullTimeFaculty>();
-        ArrayList<PartTimeFaculty> pt = new ArrayList<PartTimeFaculty>();
+        ArrayList<TeachingAssistant> ta = new ArrayList<>();
+        ArrayList<FullTimeFaculty> ft = new ArrayList<>();
+        ArrayList<PartTimeFaculty> pt = new ArrayList<>();
 
         try {
             //addFTRecords(ft, "Full-Time-Faculty.txt");
             //addPTRecords(pt, "Part-Time-Faculty.txt");
             //addTARecords(ta, "TAs.txt");
-            findTermSalary("Part-Time-Faculty.txt", "TAs.txt");
+            //findTermSalary("Part-Time-Faculty.txt", "TAs.txt");
             findHighest_and_Lowest_FT_Salary("Full-Time-Faculty.txt");
-            increase_Staff_Salary("StaffCOPY.txt");
+            //increase_Staff_Salary("StaffCOPY.txt");
         } catch (FileNotFoundException e) {
             System.out.println(e);
         }
